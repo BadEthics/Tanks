@@ -6,11 +6,7 @@
 #include "../Public/TankPlayerController.h"
 
 
-void ATankPlayerController::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-	AimTowardsCrosshair();
-}
+
 
 
 
@@ -30,6 +26,12 @@ void ATankPlayerController::BeginPlay()
 	
 }
 
+void ATankPlayerController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	AimTowardsCrosshair();
+}
+
 ATank* ATankPlayerController::GetControlledTank() const
 {
 	return Cast<ATank>(GetPawn());
@@ -44,12 +46,10 @@ void ATankPlayerController::AimTowardsCrosshair()
 	//If it hits landscape
 	if (GetSiteRayHitLocation(HitLocation))//Has raytrace effect
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Hit location: %s"), *HitLocation.ToString());
-		
-		
-			//TODO Tell controlled tank to aim at this point
+		GetControlledTank()->AimAt(HitLocation); // Tell controlled tank to aim at this point
 	}
 }
+
 //Getworld location through linetraceing through crosshair
 bool ATankPlayerController::GetSiteRayHitLocation(FVector& HitLocation) const 
 {
@@ -69,6 +69,7 @@ bool ATankPlayerController::GetSiteRayHitLocation(FVector& HitLocation) const
 	
 	return true;
 }
+
 //*De-project the screen position of the crosshair to a world direction
 bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector & LookDirection) const
 {

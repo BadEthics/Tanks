@@ -34,3 +34,8 @@ void ATank::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 
 }
 
+void ATank::AimAt(FVector HitLocation)
+{
+	auto OurTankName =  GetName();
+	UE_LOG(LogTemp, Warning, TEXT("%s Aiming AT %s"), *OurTankName, *HitLocation.ToString() );
+}
