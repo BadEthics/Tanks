@@ -1,8 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Tanks.h"
-
-#include "TankPlayerController.h"
+#include "Tank.h"
 #include "../Public/TankPlayerController.h"
 
 
@@ -42,7 +41,6 @@ void ATankPlayerController::AimTowardsCrosshair()
 	if (!GetControlledTank()) { return; }
 
 	FVector HitLocation;//Out Parameter
-	//FVector LookDirection = ;
 	//If it hits landscape
 	if (GetSiteRayHitLocation(HitLocation))//Has raytrace effect
 	{
