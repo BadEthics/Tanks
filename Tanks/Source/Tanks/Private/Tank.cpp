@@ -4,9 +4,9 @@
 #include "TankAimingComponent.h"
 #include "../Public/Tank.h"
 
-
-class UTankBarrel; //Forward declaration
-
+//Forward declaration
+class UTankBarrel; 
+class UTankTurret;
 
 // Sets default values
 ATank::ATank()
@@ -22,6 +22,12 @@ void ATank::SetBarrelRefrence(UTankBarrel* BarrelToSet)
 {
 	TankAimingComponent->SetBarrelRefrence(BarrelToSet);
 }
+
+void ATank::SetTurretRefrence(UTankTurret* TurretToSet)
+{
+	TankAimingComponent->SetTurretRefrence(TurretToSet);
+}
+
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
 {
