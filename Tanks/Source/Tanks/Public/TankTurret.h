@@ -19,15 +19,12 @@ class TANKS_API UTankTurret : public UStaticMeshComponent
 
 public:
 	//-1 is max downward movement, and +1 is max upward movement
-	void Turn(float RelativeSpeed);
+	void Rotate(float RelativeSpeed);
+
 private:
 	UPROPERTY(EditAnywhere, Category = Setup)
-	float MaxDegreesPerSecond = 5;
+	float MaxDegreesPerSecond = 15;
 
-	UPROPERTY(EditAnywhere, Category = Setup)
-		float MaxYawDegrees = 360;
-
-	UPROPERTY(EditAnywhere, Category = Setup)
-		float MinYawDegrees = -360;
+	
 	
 };
